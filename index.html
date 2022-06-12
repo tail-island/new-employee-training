@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>プログラミング未経験で新人研修でプログラミングをやらされている皆様へ</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+  <meta name="description" content="文系の文系による文系のための機械学習ガイド。">
+  <meta name="keywords"    content="機械学習,Python">
+
+  <style>
+  	.markdown-body {
+  		box-sizing: border-box;
+  		min-width: 200px;
+  		max-width: 980px;
+  		margin: 0 auto;
+  		padding: 45px;
+  	}
+
+  	@media (max-width: 767px) {
+  		.markdown-body {
+  			padding: 15px;
+  		}
+  	}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<article class="markdown-body">
+<p>新人研修の季節ですね。いろいろな会社で、今までプログラミングをやったことがない新人に無理やりプログラミングを学ばせるという蛮行がまかり通ってしまう季節です。</p>
+<p>でね、中学高校大学と英語を勉強してきた私が英語を喋れないことから明らかだと思うのですけど、わずか数ヶ月の新人研修でプログラミング「言語」をマスターするのは無茶だと思うんですよ。しかも新人の中にはプログラミング経験者という帰国子女がいて、それと同列に評価されるという無茶な状況です。</p>
+<p>しかも、教える側は教育のプロフェッショナルではありません。文学部日本文学科卒業で、役に立たない学科なんだから取っておけと言われた教員免許を単位不足で取れなかったこの私ごときが、新人研修の講師をやっています。教材とかも、素人が作っているくさいしね。</p>
+<p>というわけで、できなくて当然……なのですけど、将来に関わるかもしれませんから、どうにかして研修をクリアしなければなりません。このような状態に陥ってしまった皆様、お時間があるときに本稿を読んでみてはいかがでしょうか？</p>
+<h2 id="本稿の前提">本稿の前提</h2>
+<ul>
+<li>プログラミング言語は、Java SE
+8を使用します。私が所属する企業の新人研修で使っているためです。</li>
+<li>なぜそのような機能があるかという理屈が中心となっています。どのように書けば良いのか「だけ」を知りたい方には向かないと思います。</li>
+<li>本稿はJavaの機能を網羅しません。本稿で仕組みを理解した後に、新人研修のテキストやインターネットで詳細を調べるようにしてください。</li>
+<li>私はArch Linux上でVisual Studio
+CodeとMavenを使用しました。が、本稿ではOSやツールの説明はしませんので、皆様は会社に指定された環境を使用してください。</li>
+</ul>
+<h1
+id="とりあえずいろいろ表示してみる">とりあえず、いろいろ表示してみる</h1>
+<p>プログラミング未経験者の皆様は、コンピューターは頭が良いと考えているかもしれません。</p>
+<p>でも、よく考えてみてください。コンピューターが本当に頭が良いなら、「あれをいい感じにやっておいて」で済むはずでしょ？　それでは済まないから皆様はプログラミング言語を学んでいるわけで、つまりコンピューターは頭が悪くて、人間と比較して圧倒的に理解力が低いんです。</p>
+<p>このような理解力が低いコンピューターでも理解できるようにプログラミング言語は作られていて、だからプログラミング言語は難しいんですよ。だって、頭が悪いコンピューターでも分かるように作られた言語を頭が良い皆様が学ぶには、頭が悪いコンピューターの気持ちにならなければならないんですから。</p>
+<h2 id="計算結果を表示してみる">計算結果を表示してみる</h2>
+<p>では、どのくらいコンピューターが頭が悪いのかを、「1 +
+1の結果を表示する」プログラムを作成して学んでみましょう。</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OnePlusOne <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>お題である「1 + 1の結果を表示する」の「1 +
+1」に相当するのは、<code>System.out.println(1 + 1);</code>の中の<code>1 + 1</code>です。計算をしたいなら計算式を書けばよいというわけ。で、「結果を表示する」は<code>System.out.println(1 + 1);</code>の<code>1 + 1</code>以外の部分。何か表示したかったら、<code>System.out.println(</code>と書いて、表示したい内容（今回は1
++ 1）を書いて、その後に<code>);</code>を書いてあげれば良いわけ。</p>
+<p>じゃあ残りの<code>class OnePlusOne {</code>とか<code>}</code>は何なのかというと、コンピューターは頭が悪すぎて毎回同じ形式で指示されなければ理解できないので他のもっと難しいお題の場合でも使えるような複雑な形式に揃えるために存在しているだけ。今はとりあえず、<code>class OnePlusOne {</code>の<code>OneToOne</code>の部分に、お題を表現する文字を空白無しで書くことだけ意識しておけばOKです。</p>
+<p>……世の中には簡単なお題の場合の理解の仕方を知っているプログラミング言語もあって、たとえばPythonというプログラミング言語だと、同じお題を以下の一行で書けるんですけどね。</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>じゃあPython使えば良いじゃんというのはもっともなのですけど、ごめんなさい、その疑問は封印でお願いします。私だって、なんでJavaなんかを新人研修で使っているのか分からないんですから。</p>
+<h2 id="メッセージを表示してみる">メッセージを表示してみる</h2>
+<p>計算の次は、メッセージの表示をやりましょう。お題は「こんにちは、と表示する」です。先程の「1
++
+1の結果を表示する」から考えてみれば、<code>1 + 1</code>の部分を<code>こんにちは</code>に変更するだけで良さそう。こんな感じ。</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrintHello <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>こんにちは<span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>と思ったのですけど、残念なことにこのプログラムは動きません。人間であれば<code>1 + 1</code>は計算式で、<code>こんにちは</code>は表示するメッセージだと分かるのですけど、そんな複雑なことはコンピューターには分かりません。だから、これはメッセージなんだよ、文字がつながった文字列なんだよとコンピューターでも理解できるようにしてあげなければなりません。Javaの場合、コンピューターに文字列として認識させるには<code>"</code>で囲って<code>"こんにちは"</code>としげあげればオッケー。</p>
+<p>というわけで、Javaでも理解できるように修正した結果は、こんな感じになります。</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrintHello <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;こんにちは&quot;</span><span class="op">);</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>これでメッセージを表示できるようになりました。</p>
+<h2
+id="メッセージと計算結果を表示してみる">メッセージと計算結果を表示してみる</h2>
+<p>あれ？　ここまでできたなら、「1 +
+1は2です」を表示できるんじゃないかな？　そう、こんなプログラムで。</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrintOnePlusOne <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;1 + 1は&quot;</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span> <span class="st">&quot;です&quot;</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>……残念ながら、このプログラムも動かないんだけどな。</p>
+<p>というのも、<code>System.out.println();</code>の<code>(</code>と<code>)</code>の中には、値を一つしか書けないんですよ。<code>1 + 1</code>は計算をすればその結果は2という一つの値になるので問題なし。<code>"こんにちは"</code>も一つの文字列という値なのでオッケーでした。でも、<code>"1 + 1は" 1 + 1 "です"</code>は3つの値なのでどうにかして一つの値にまとめなければなりません。</p>
+<p>というわけで、足し算しちゃいましょう。<code>"1 + 1は"</code>という文字列に1
++
+1の結果の2を足すというのは無意味に思えるかもしれませんけど、Javaでは、文字列への足し算は文字列の結合の意味になります。<code>"こんにちは" + "Java"</code>は<code>"こんにちはJava"</code>になって、<code>"1 + 1は" + 2</code>は<code>"1 + 1は2"</code>という文字列になるというわけですな。</p>
+<p>早速やってみましょう。</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrintOnePlusOne <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;1 + 1は&quot;</span> <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> <span class="st">&quot;です&quot;</span><span class="op">);</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>……ごめんなさい、失敗しました。「1 +
+1は11です」と表示されちゃった。足し算は左からやっていくので、<code>"1 + 1は" + 1</code>がまず実行されて<code>"1 + 1は1"</code>という文字列になって、それに<code> + 1</code>したから<code>"1 + 1は11"</code>という意味不明な文字列になっちゃったんですな。</p>
+<p>というわけで、この部分の計算を先にしなさいという意味で<code>()</code>を使用してみます。こんな感じ。</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PrintOnePlusOne <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;1 + 1は&quot;</span> <span class="op">+</span> <span class="op">(</span><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">+</span> <span class="st">&quot;です&quot;</span><span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>はい。これで正しく「1 +
+1は2です」が表示されました。以上を活用して、四則演算や文字列との結合をいろいろ試してみてください。お疲れさまでした。</p>
+<h1
+id="変数とループがあるとちょっと楽になる">変数とループがあると、ちょっと楽になる</h1>
+<p>1 +
+1なんか、わざわざプログラムを組まなくたって計算できるよ！　これが、前の章を読んで皆様が感じたことだと思います。でも、もう少し計算が複雑になったらどうでしょうか？</p>
+<h2 id="複利計算をやってみる">複利計算をやってみる</h2>
+<p>会社に入って一番嬉しいことは給料がもらえることでしょう。世の中やっぱり金だよカネ。この金を増やす方法として貯金とか投資とかがあると噂に聞きました。毎月1万円を、月の利回り1%で運用したらどうなるか、プログラムを作って考えてみましょう。</p>
+<p>利回りが1%ということは1.01倍すれば良くて、最初は0円スタートなので、最初の月は<code>0 * 1.01 + 1</code>で表現できそう。翌月はその1.01倍に1を足せばよいので、<code>(0 * 1.01 + 1) * 1.01 + 1</code>でできそう。これをとりあえず6ヶ月分書いてみたら、こんな感じになりました。</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InvestmentResult <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">((((((</span><span class="dv">0</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>結果は6.152015060100001で、6万円投資して1,520円しか儲からないので投資に意味はないという間違った印象を持たれちゃいそう。もっと長くやると投資の効果が分かるのですけど、これ以上長く計算式を書いていくのは辛すぎる……。</p>
+<p>というわけで、変数を使用してみましょう。</p>
+<h2 id="変数を使ってみる">変数を使ってみる</h2>
+<p>変数は、値の入れ物です。この値の入れ物を使ってちょっと楽になってみる……には、ごめんなさい、準備が必要です。我々人間なら「その結果を」とか「この前のアレを」とかで理解できるのですけど、コンピューターは頭が悪いのでいきなり「それ」と言われても理解できません。だから、まずはこんな名前の変数を使うとJavaに教えてあげなければならないんです。こんな感じ。</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> asset <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>  <span class="co">// doubleの値を入れることができる変数assetを宣言し、0を代入する。</span></span></code></pre></div>
+<p><code>double</code>の部分は、変数に入れる値がどのようなものなのか（これを型と呼びます）を表現しています。コンピューターはその内部で整数と少数、文字と文字列を異なる方式で管理しています。しかも、計算を速くするために、整数や少数では精度はイマイチだけど計算が速いバージョンと、精度は高いけど計算が遅いバージョンを持っていたりします。</p>
+<p>で、<code>double</code>というのは、精度が高い方の少数を表現する型です。少数を扱える型は他に<code>float</code>があるのですけど、これの2倍の精度があるので<code>double</code>と名前がついているわけ。</p>
+<p><code>asset</code>の部分は、変数の名前です。自由に名付けていただいて構わないのですけど、使用可能な文字に制限があるので気をつけてください（詳細は新人研修のテキストを見てください）。日本語の名前をつけることも可能なのですけど、英語にしたほうが入力が楽でカッコイイと思います。</p>
+<p><code>=</code>は、左辺と右辺が等しいことを表しているわけではなくて、代入を意味しています。<code>double asset = 0;</code>した後は、<code>asset</code>の値は0になるわけですね。</p>
+<p>最後の<code>;</code>は、文の終わりを意味しています。コンピューターは頭が悪くて「アレしてコレしてソレして」と言われてもどこで区切ればよいのか分からないので、「アレして。コレして。ソレして。」と文を分けて書いてあげなければならないんです。あと、行の終わりはピリオドだろうと考えた方がいるかもしれませんが、ピリオドは小数点を表すのに使ってしまったのでセミコロンになりました。コンピューターは頭が悪いので、この場合は小数点でこの場合は行の終わりと正しく推測させるのは大変なためです（そんなの簡単じゃんと思った方は、「JavaScript
+セミコロン」で検索してみてください）。</p>
+<p>ともあれ、これで変数は宣言できたので、あとは使うだけです。</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">// 資産に、資産 * 1.01 + 1を代入する。</span></span></code></pre></div>
+<p>思い出してください。<code>=</code>は代入でしたよね？　だから、上のプログラムは資産である<code>asset</code>に、<code>asset * 1.01 + 1</code>を代入しています。よって、この行を実行した後は、<code>asset</code>の値は<code>0 * 1.01 + 1</code>の結果の1になるわけですね。</p>
+<p>あとは、これを繰り返すだけ。1年後の資産残高を表示するプログラムは、以下のようになりました。</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InvestmentResult <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> asset <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>asset<span class="op">);</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>asset</code>には計算で得た一つの値が入っているので、<code>1 + 1</code>や<code>"こんにちは"</code>と同様に、<code>System.out.println()</code>の括弧の中に書くことができます。</p>
+<p>で、結果は12.682503013196973となりました。半年では1,520円でしたが、1年だと6,025円も増えます。金額としてはそんなに大きくはありませんけど、期間が2倍になったら利益が約4倍となったところに投資の凄さを感じます。凄そうなので、ぜひもっと長い期間で計算してみたい！</p>
+<p>でも、これを30年分とか繰り返して書くのは辛すぎます。だから、ループを使ってみましょう。</p>
+<h2 id="ループを使ってみる">ループを使ってみる</h2>
+<p>プログラミングでは、繰り返し処理のことをループと呼びます。世の中にはこのループを簡単に記述できるプログラミング言語もあって、たとえばRubyだと以下のように書けばオッケーです。</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="at">.times</span> <span class="kw">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="vs">&#39;繰り返し&#39;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<p>これだけで、「繰り返し」という文字列が10回表示されるわけですね。簡単に書けるうえに分かりやすくて素晴らしい！</p>
+<p>……でも、我らがJavaにはこんな便利な仕組みはありません。だから、10回「繰り返し」と表示したければ、以下のように記述しなければなりません。</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;繰り返し&quot;</span><span class="op">);</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>もしくは、こんな感じ。</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;繰り返し&quot;</span><span class="op">);</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>１つ目の書き方を<code>for</code>ループ、2つ目の書き方を<code>while</code>ループと呼びます。まずは、説明が簡単な<code>while</code>ループで説明とさせてください。</p>
+<p><code>while</code>ループでは、括弧の中の条件が満たされている間、中括弧（<code>{}</code>）の中の処理を繰り返します。今回のプログラムの場合だと、<code>int</code>型（integerの意味で、整数型です）の変数<code>i</code>は0で初期化されていますから10未満という条件を満たし、中括弧の中の処理を実行することになって、<code>System.out.println("繰り返し");</code>で「繰り返し」という文字列を表示します。その次の<code>++i;</code>は<code>i</code>に1を足すという意味になります。<code>i = i + 1;</code>と書かないのは、1を足したり1を引いたりするのはプログラムの中で頻繁に実行されるので、CPUに1足したり1引いたりする専用の回路が用意されていて、それを使った方が実行が速いためです。あと、短いので書くのが楽ですしね。</p>
+<p>0が代入されていた<code>i</code>に<code>++i</code>することで、<code>i</code>の値は1になります。ここまでで中括弧の範囲は終わりですから、コンピューターは<code>while</code>に戻って、括弧の中の条件を満たすか確認します。1は10未満ですからやっぱり条件を満たすので、中括弧の中が実行されます。中括弧の中を実行すると<code>++i</code>されてまた<code>i</code>の値が1増えて……を繰り返していくとやがて<code>i</code>の値は10になって、<code>while</code>の括弧の<code>i &lt; 10</code>が満たされなくなって、これで<code>while</code>ループは終了。コンピューターは<code>while</code>ループの次に書いてある文を実行します。</p>
+<p><code>for</code>ループは、これの短縮形です。<code>for</code>の後の括弧の中に、セミコロンで区切って<code>変数の宣言と初期化; ループを繰り返す条件; 変数の値を変更する操作</code>を書きます。<code>while</code>よりも書くのが簡単なので、10回繰り返すような単純なループは、一般に<code>for</code>ループで書きます。</p>
+<p>あと、蛇足なのですけど、なんでループの変数名に<code>i</code>を使うのかというと、最初に作られたプログラミング言語のFORTRANがループなどで使う整数型の変数はI〜Nと決めちゃったから。なんでFORTLANがそんな取り決めをしたのかというと、数式で繰り返しを表現するΣでiが使われることが多かったから。数学でiを使うことが多かったのは、多分、indexのiなんじゃないかな。</p>
+<p>さて、説明が長くなってしまいましたが、ループの説明を始めたのは、投資の効果をループを使用して確認するためでした。なので、毎月1万円を、月の利回り1%で30年間運用した場合にどうなるかをプログラミングしてみます。こんな感じ。</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InvestmentResult <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> asset <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">30</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span>  <span class="co">// 30年分のループ</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> <span class="dv">12</span><span class="op">;</span> <span class="op">++</span>j<span class="op">)</span> <span class="op">{</span>  <span class="co">// 12ヶ月分のループ</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                asset <span class="op">=</span> asset <span class="op">*</span> <span class="fl">1.01</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>asset<span class="op">);</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>外側の変数<code>i</code>を使っている<code>for</code>ループで30年分の繰り返しを、内側の変数<code>j</code>を使っている<code>for</code>ループで12ヶ月分の繰り返しをやっているわけですね。</p>
+<p>で、その結果は、なんと3494.9641327684994になりました。30×12は360万円なので、実に3,134万9,641円の利益です。投資ってすごいですな！……普通利回りは年で表現するもので、月1%の利回り（今プログラムを組んで計算してみたら、年利回り12.7%に相当します）なんて非現実的だからこの結果に意味はないだろという反論は、ごめんなさい、却下で。私は貯金も投資をやったことがないので、この分野に疎いんです。</p>
+<p>ともあれ、変数もループも便利なのは本当です。電卓では面倒すぎてやれないような計算を、変数やループを駆使していろいろ試してみてください。お疲れさまでした。</p>
+<h1 id="条件分岐して処理内容を分ける">条件分岐して処理内容を分ける</h1>
+<p>いろいろ計算できるのは分かったけどさぁ、もう少しエンタメ性がないと勉強していて面白くないよ。それはおっしゃるとおりなので、FizzBuzzという、英語圏のゲームで、なおかつ、プログラミングができるかどうかの判定に使われることが多いお題をやってみましょう。</p>
+<h2 id="fizzbuzzとは">FizzBuzzとは？</h2>
+<p>プレイヤーが輪になって数字を1から順に数えていくゲームで、ただし、3の倍数のときはFizz、5の倍数のときはBuzz、そして3と5の倍数のときはFizzBuzzと言わなければならないというゲームです。1、2、Fizz、4、Buzz、6……のように順に言わなければならないわけで、これがやってみると結構難しい。でも、プログラムを組めば、絶対に正解できます。</p>
+<p>……プログラムに間違いがなければ、だけどな。</p>
+<h2
+id="とりあえず1100まで数えてみる">とりあえず、1〜100まで数えてみる</h2>
+<p>前章で学んだループを使用すれば、1〜100まで表示するプログラムを作るのは簡単です。こんな感じ。</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FizzBuzz <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>「1から」なので、初期値を1にするために<code>int i = 1;</code>に、「100まで」なので、ループの条件が100以下になるように<code>i &lt;= 100;</code>にしました。これで1〜100までの数字が表示されます。</p>
+<h2
+id="少し書いたら実行するのがプログラミングの極意">少し書いたら実行するのが、プログラミングの極意</h2>
+<p>さて、プログラミング未経験者の誤解として、「プログラミングできる人はいきなり正しいプログラムを書ける」というのがあります。これは完全に間違いで、どんなすごいプログラマーでも余裕で間違えます。プログラミングに慣れていても文法間違えはなくなりませんし、先のプログラムの例で言えば0から始めたり99でループが終わってしまったりします。</p>
+<p>ではどうしているかというと、プログラミングできる人は、こまめに実行して間違いがないことを確認します。FizzBuzzのプログラムを作りなさいと言われた場合、本稿でやっているようにとりあえず1〜100を表示するだけ、FizzもBuzzもFizzBuzzもやらない単純なプログラムを作って実行して間違いがないことを確認して、その後に、FizzやBuzzやFizzBuzzの処理を書いていきます。このようにすれば、必ず間違いをおかす我々人間でも、確実にプログラムを作成することができるんですよ。</p>
+<p>この逆をやるのは、つまりいきなりプログラム全体を書くのは、絶対にやっては駄目。コンピューターは間違いに不寛容で、セミコロンを忘れただけでも駄目ですし、変数名の大文字と小文字を間違えたら異なる変数と思い込んでそんな変数は知らないと文句を言ってきます。一つでも間違いがあるとコンパイルができなくて、いっぱいプログラムを書いたらいっぱいミスをするので、そのいっぱいのミスを全部修正しないとコンパイルしてプログラムを動かすことができません。</p>
+<p>文法的に正しく修正できたのでコンパイルできてプログラムを動かせたとしても、コンピューターはプログラムに書いた通りにしか動作しないので、お題の通りに動くかは分かりません。先のプログラムで<code>int i = 0;</code>と書いたら、もう絶対に0から始めちゃうわけ。このような間違いを全て修正しないと正しく動作しないのですけど、いっぱいプログラムを書いてしまうとどこが間違いなのかを探すのはとても大変になります。大変な思いはしたくないので、だから、少しプログラムを書いて実行して、間違いを探す範囲をその少しのプログラムという小さな範囲にするというわけ。</p>
+<p>プログラミング初心者のうちは、一行書いたらコンパイルして文法ミスがないことを確認する、二行書いたらコンパイルして実行して処理内容に間違いがないことを確認する、くらいが丁度良いと思いますよ。</p>
+<h2 id="条件分岐を使ってみる">条件分岐を使ってみる</h2>
+<p>閑話休題。1〜100まで数え上げるのができましたので、次は、3の倍数のときは数字ではなくてFizzと表示する処理を追加してみましょう。〇〇ならば△△するという処理は、<code>if</code>文で実現します。こんな感じ。</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FizzBuzz <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>  <span class="co">// 3の倍数なら</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Fizz&quot;</span><span class="op">);</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>           <span class="co">// そうでなければ</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>if</code>の後ろの括弧の中の条件が満たされたら中括弧の中を、そうでなければ<code>else</code>の後の中括弧の中が実行されるというわけ。<code>%</code>は、割り算した余りを計算するという意味になります。3で割った余りが0なら、3の倍数ですよね？　その場合はFizzを表示して、そうでなければ数字をそのまま表示するというわけ。このプログラムをう動かしてみると、3の変わりにFizzが表示されることが分かります。</p>
+<p>で、このまま調子にのって、5の倍数のときにBuzz、3と5の倍数のときにFizzBuzzと表示する<code>if</code>文を追加してみました。結果はこんな感じになったのですが、気をつけてください、このプログラムは正しく動作しません。</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FizzBuzz <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>                       <span class="co">// 3の倍数なら</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Fizz&quot;</span><span class="op">);</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>                <span class="co">// 5の倍数なら</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Buzz&quot;</span><span class="op">);</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>  <span class="co">// 3の倍数、かつ、5の倍数なら</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;FizzBuzz&quot;</span><span class="op">);</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>                                <span class="co">// そうでなければ</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>まずは文法の話をしておきますと、<code>if (条件)</code>が満たされない場合向けにさらに条件分岐したい時は、<code>else if</code>と書きます。あと、複数の条件を「かつ（AND）」でつなげたい場合は、<code>&amp;&amp;</code>と書きます。</p>
+<p>で、上のプログラムでは3の倍数のときと5の倍数のときと3と5の倍数のときの条件分岐を書いていて、3の倍数ではFizz、5の倍数のときはBuzzと表示されるのですけど、3と5の倍数である15のときにFizzBuzzと表示されずにFizzと表示されてしまいます……。</p>
+<p>これはなぜかというと、プログラムは上から順番に実行されるためです。<code>i</code>が15の場合でループの中括弧の中を上から見ていくと、<code>15 % 3 == 0</code>なので最初の<code>if</code>文の条件が満たされて、<code>System.out.println("Fizz");</code>が実行されてFizzが表示されてしまったというわけ。<code>else if (i % 3 == 0 &amp;&amp; i % 5 == 0)</code>までやってこないので、FizzBuzzが表示されることはありません。</p>
+<p>じゃあどうすればよいかというと、3と5の倍数の判定を先に持ってくればよいわけ。こんな感じです。</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FizzBuzz <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>  <span class="co">// 3の倍数、かつ、5の倍数なら</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;FizzBuzz&quot;</span><span class="op">);</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>         <span class="co">// 3の倍数なら</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Fizz&quot;</span><span class="op">);</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>         <span class="co">// 5の倍数なら</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Buzz&quot;</span><span class="op">);</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span>                         <span class="co">// そうでなければ</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>これで、15や30でFizzBuzzが表示されるようになりました！　このプログラムを改造すれば、3の倍数と3がつく数（<code>i % 3 == 0 || i % 10 == 3 || i / 10 == 3</code>）で阿呆になる「世界のナベアツ」を作れますのでぜひやってみてください（30〜39の阿呆連発がなかなか面白いです）。お疲れさまでした。</p>
+<h1
+id="メソッドを作成して重複を減らす">メソッドを作成して、重複を減らす</h1>
+<p>でさぁ、ここまでなんとなく書いてきたけど、<code>System.out.println()</code>って何なの？　未だに説明がないんだけど。……と、疑問をお持ちの皆様、ついにここで説明します。これはメソッドと呼ばれるもので、それを呼び出しているんです。</p>
+<h2
+id="同じ処理を何回も書くのは苦痛">同じ処理を何回も書くのは苦痛……</h2>
+<p>こんな計算になんの意味があるのかは分かりませんが、「2と3と5と7と11と13の、それぞれを二乗した結果の合計を求めなさい」というお題のプログラムを考えてみてください。数字の増え方が一定ではないので、<code>for</code>ループは使用できません。だから、こんなプログラムになります。</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SumOfPrimeSquare <span class="op">{</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">7</span> <span class="op">*</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">11</span> <span class="op">*</span> <span class="dv">11</span><span class="op">;</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="dv">13</span> <span class="op">*</span> <span class="dv">13</span><span class="op">;</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>sum<span class="op">);</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>あ、<code>+=</code>は、右辺の値を左辺の変数に足し合わせるという意味です。<code>sum += 2 * 2;</code>は<code>sum = sum + 2 * 2;</code>と同じ結果になります。</p>
+<p>で、このプログラムは、2 * 2と書くつもりが2 *
+3とか書いちゃいそうで怖いです。だから、変数を使用して間違いが発生する可能性を減らしてみましょう。</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SumOfPrimeSquare <span class="op">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> x <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">11</span><span class="op">;</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">13</span><span class="op">;</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>sum<span class="op">);</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>長いよ！　間違いが発生しづらくはなりましたが、同じ処理を何回も書くのが面倒くさくなってしまいました。<code>x</code>に値を設定して、その二乗を計算して<code>sun</code>に足し合わせるという処理は、毎回同じですもんね。こんなときは、メソッドが役に立ちます。</p>
+<h2 id="メソッドを作成する">メソッドを作成する</h2>
+<p>実は今までも皆様はメソッドを作成していて、それは<code>public static void main(String[] args) {}</code>の部分です。<code>main</code>の部分がメソッドの名前、括弧の中が引数、中括弧の中がメソッドの処理となります……と言われてもなんだかわからないので、具体的なコードで説明とさせてください。</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SumOfPrimeSquare <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">2</span><span class="op">);</span>  <span class="co">// squareメソッドを使用して、2の2乗を足す</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">3</span><span class="op">);</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">7</span><span class="op">);</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">11</span><span class="op">);</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">13</span><span class="op">);</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>sum<span class="op">);</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2乗した結果を返すメソッド</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">int</span> <span class="fu">square</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>今回作成したメソッドは、プログラムの以下の部分です。</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">square</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>メソッドの最初の<code>static</code>はとりあえずおまじないだと考えてください（後でクラスと一緒に説明します）。次の<code>int</code>は、メソッドで処理をした結果（メソッドの戻り値と呼びます）の型です。今回は<code>int</code>の値の2乗を計算するメソッドなので、メソッドで処理をした結果も<code>int</code>になりますから、<code>int</code>を指定します。<code>square</code>はメソッドの名前で、処理内容が分かる名前を自由に付けてください。今回は、二乗を計算するメソッドなので、英訳して<code>square</code>にしました。</p>
+<p>括弧の中は、メソッドの処理の中で必要となる変数（メソッドの引数と呼びます）を記述します。二乗するにはどの数を二乗するのかという情報が必要なので、<code>int</code>型の<code>x</code>という変数を書きました。変数なので、名前は何でも構いません。<code>a</code>でも<code>number</code>でも何でも分かりやすければ可。数学では関数の引数はxとすることが多いので、今回は名前を<code>x</code>にしてみました。</p>
+<p>中括弧の中が処理です。<code>x * x</code>で二乗を計算して、で、計算した結果を関数の処理結果とするために<code>return</code>しています。だから中括弧の中は<code>return x * x;</code>となったわけですね。</p>
+<h1 id="メソッドを呼び出す">メソッドを呼び出す</h1>
+<p>メソッドを作成しただけでは意味がないので、作成したメソッドを利用しましょう。メソッドを利用することを「呼び出す」と言います。</p>
+<p>で、メソッドを呼び出しているのは、<code>sum += square(2);</code>や<code>sum += square(3);</code>の、<code>square(2)</code>や<code>square(3)</code>の部分です。呼び出される側であるメソッドを作成したときにメソッドの戻り値の型や引数の型を定義したことを、理解力は低いけど記憶力は良いコンピューターは覚えています。だから、メソッドを呼び出すときは型の記述は不要。<code>メソッド名(引数に代入したい値)</code>とするだけでオッケーです。</p>
+<p><code>square(2)</code>とすると、<code>square</code>メソッドの一番目の引数である<code>int x</code>に2が代入されます。<code>int x = 2;</code>と同じ処理が実行されるわけですね。で、その<code>x</code>を使用して<code>x * x</code>した結果がメソッドの戻り値として<code>return</code>されるので、2の二乗の4になって、それを<code>sum</code>に<code>+=</code>すれば、これで2の二乗を足し合わせる部分まで終了。あとは続けて<code>square(3)</code>や<code>square(5)</code>と続けて処理をしていけば完了です。メソッドを使ったら、最初のプログラムより間違いの可能性が減って、2番目のプログラムよりも大分楽になったでしょ？</p>
+<h1
+id="メソッド呼び出し時引数へは値が代入される">メソッド呼び出し時、引数へは値が「代入」される</h1>
+<p>……どうせなら<code>sum +=</code>の部分もメソッドの処理に含めちゃえば楽になるんじゃね？　このようにお考えの方もいらっしゃると思いますが、残念ながらそれはうまくいきません。実際にプログラムを作って試してみましょう。</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SumOfPrimeSquare <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">11</span><span class="op">);</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">square</span><span class="op">(</span>sum<span class="op">,</span> <span class="dv">13</span><span class="op">);</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>sum<span class="op">);</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">void</span> <span class="fu">square</span><span class="op">(</span><span class="dt">int</span> sum<span class="op">,</span> <span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>メソッドは処理結果を返さなくても構いません。で、その場合は、メソッドの戻り値の型を<code>void</code>にします。で、足し合わされる数を表現する<code>int sum</code>と、二乗して足し合わせる数を表現する<code>int x</code>を引数にしてみました。</p>
+<p>さて、このプログラムを実行すると……0が表示されてしまいます。あれ？　<code>sum +=</code>しているのにどうして？</p>
+<p>それは、メソッド呼び出しの際に、引数へは代入がなされるためです。以下のプログラムで考えてみてください。</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SumOfPrimeSquare <span class="op">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> j <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        j <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>j<span class="op">);</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>int i = 0;</code>で、変数<code>i</code>の値は0になります。<code>int j = i;</code>では、変数<code>j</code>に<code>i</code>の値を代入しているので、<code>j</code>の値は0になります。で、その後、<code>j += 1;</code>で、<code>j</code>の値は1を足されて、0
++
+1の結果である1になります。ここで重要なのは、変数<code>j</code>には変数<code>i</code>の「値」が代入されただけで、変数<code>i</code>そのものとは無関係であることです。だから、その後の<code>System.out.println(i);</code>では<code>j += 1;</code>したこととは無関係で、変数<code>i</code>の値である0が表示され、<code>System.out.println(j);</code>では変数<code>j</code>の値である1が表示されます。</p>
+<p>考えてみれば当たり前ですよね。代入がこのような動作になっていないと、<code>int j = i + 1;</code>と書いたときの動きが、わけわからなくなっちゃいますもん。</p>
+<p>で、これは引数でも同じです。<code>square(sum, 2)</code>したときの動作は、<code>square</code>メソッドの一番目の引数の<code>sum</code>に、呼び出し側の<code>sum</code>（同じ名前なので分かりづらいですけど、呼び出し側と呼び出される側では同じ名前でも別の変数になります。詳細は、次の章で説明するスコープまでお待ちください）の値を代入し、2番目の引数の<code>x</code>に2を代入しています。値が代入されただけなので、呼び出されたメソッドの中で引数の<code>sum</code>に<code>x</code>を二乗した結果を足し合わせても、呼び出し側の変数<code>sum</code>の値は変化しません（先のプログラムで、<code>j += 1;</code>しても変数<code>i</code>に影響がなかったのと同じ）。</p>
+<p>だから、呼び出し側の変数<code>sum</code>の値は0のまま変化せず、だから最後の<code>System.out.println(sum);</code>で0が表示されたというわけ。</p>
+<p>なんでそんな面倒な作りになっているんだと感じた方がいらっしゃるかもしれませんけど、これは、そのような作りの方がプログラミングが楽になるためです。詳細は次の章でご説明しますが、とりあえずは、呼び出される側のメソッドの引数は、呼び出す時に指定した値や変数の値が代入されるだけなのだと覚えておいてください。</p>
+<p>ともあれ、その動作を理解してしまえば、メソッドはとても便利です。メソッドを活用したプログラムを作成してみてください。お疲れさまでした。</p>
+<p>……ごめんなさい。枕で触れた<code>System.out.println()</code>について書くのを忘れていました。実はこれ、Javaを作った人が作成してくれたメソッドなんです。今回作成した<code>square()</code>メソッドよりちょっと中身は複雑ですけど、でも、同じメソッドなんですよ。我々は、今まで<code>System.out.println()</code>メソッドを呼び出すことで、画面への表示をしていたわけですな。</p>
+</article>
+</body>
+</html>
